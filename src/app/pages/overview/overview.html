@@ -1,0 +1,50 @@
+<div class="overview-container">
+    <div class="button-container">
+        <a class="add-task-button" routerLink="/add-task">
+            <span class="text">Create new task</span>
+        </a>
+    </div>
+
+    <div class="main-container">
+        <div class="upper-container">
+            <h1>Tasks</h1>
+            <button class="filter-button" (click)="toggleFilters()">
+                <p>Filter</p>
+                <fa-icon [icon]="faFilter" class="icon"></fa-icon>
+            </button>
+
+        </div>
+        <div class="filter-container" [class.visible]="showFilters" [class.hidden]="!showFilters">
+            <div class="filter-wrapper">
+                <label>Category:</label>
+                <select [(ngModel)]="filter.category">
+                    <option value="">All</option>
+                    <option *ngFor="let c of categories" [value]="c">{{ c.name }}</option>
+                </select>
+            </div>
+            <div class="filter-wrapper">
+                <label>Due Date:</label>
+                <input type="date" [(ngModel)]="filter.dueDate" />
+            </div>
+            <div class="filter-wrapper">
+                <label>Priority:</label>
+                <select [(ngModel)]="filter.priority">
+                    <option value="">All</option>
+                    <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+                </select>
+            </div>
+            <div class="filter-wrapper">
+                <label>Status:</label>
+                <select [(ngModel)]="filter.status">
+                    <option value="">All</option>
+                    <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+                </select>
+            </div>
+        </div>
+        <app-task-list [filters]="filter"></app-task-list>
+    </div>
+
+
+
+
+</div>
