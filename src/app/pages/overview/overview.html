@@ -1,6 +1,6 @@
 <div class="overview-container">
     <div class="button-container">
-        <a class="add-task-button" routerLink="/add-task">
+        <a class="add-task-button" (click)="addTaskSidebarService.openAddTask()">
             <span class="text">Create new task</span>
         </a>
     </div>
@@ -43,8 +43,5 @@
         </div>
         <app-task-list [filters]="filter"></app-task-list>
     </div>
-
-
-
 
 </div>

@@ -8,10 +8,11 @@ import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { AddTaskSidebarService } from '../../services/add-task-sidebar.service';
 
 @Component({
   selector: 'app-overview',
-  imports: [RouterLink, TaskList, FormsModule, CommonModule, FontAwesomeModule],
+  imports: [TaskList, FormsModule, CommonModule, FontAwesomeModule],
   templateUrl: './overview.html',
   styleUrl: './overview.scss',
 })
@@ -25,7 +26,10 @@ export class Overview {
 
   showFilters = false;
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    private categoryService: CategoryService,
+    public addTaskSidebarService: AddTaskSidebarService
+  ) {}
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((c) => {

@@ -14,7 +14,7 @@
         </a>
       </li>
       <li>
-        <a routerLink="/add-task" class="link">
+        <a (click)="addTaskSidebarService.openAddTask()" class="link">
           <fa-icon [icon]="faPlus" class="icon"></fa-icon>
           <p class="link-text">Add Task</p>
         </a>

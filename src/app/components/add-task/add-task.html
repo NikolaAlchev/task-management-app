@@ -1,0 +1,43 @@
+<div class="overlay" (click)="close()"></div>
+
+<div class="sidebar" (click)="$event.stopPropagation()">
+  <button class="close-button" (click)="close()">×</button>
+  <h2>Add Task</h2>
+
+  <form (ngSubmit)="saveTask()" #taskForm="ngForm">
+  <label>
+    Title
+    <input type="text" [(ngModel)]="title" name="title" required />
+  </label>
+
+  <label>
+    Description
+    <textarea [(ngModel)]="description" name="description"></textarea>
+  </label>
+
+  <label>
+    Category
+    <select [(ngModel)]="category" name="category" required>
+      <option *ngFor="let category of categories" [value]="category.name">
+        {{ category.name }}
+      </option>
+    </select>
+  </label>
+
+  <label>
+    Priority
+    <select [(ngModel)]="priority" name="priority">
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </label>
+
+  <label>
+    Due Date
+    <input type="date" [(ngModel)]="dueDate" name="dueDate" required />
+  </label>
+
+  <button class="save-button" type="submit">Save Task</button>
+</form>
+</div>
