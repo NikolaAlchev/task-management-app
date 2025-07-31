@@ -13,7 +13,7 @@ export class TaskService {
       description: 'Description 1',
       category: 'Work',
       dueDate: new Date('2025-08-01'),
-      priority: 'medium',
+      priority: 'Medium',
       completed: false,
     },
     {
@@ -22,7 +22,7 @@ export class TaskService {
       description: 'Description 2',
       category: 'Personal',
       dueDate: new Date('2025-07-31'),
-      priority: 'low',
+      priority: 'Low',
       completed: true,
     },
     {
@@ -31,7 +31,7 @@ export class TaskService {
       description: 'Description 3',
       category: 'Urgent',
       dueDate: new Date('2025-07-29'),
-      priority: 'high',
+      priority: 'High',
       completed: false,
     },
   ];

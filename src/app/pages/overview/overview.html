@@ -17,25 +17,25 @@
         <div class="filter-container" [class.visible]="showFilters" [class.hidden]="!showFilters">
             <div class="filter-wrapper">
                 <label>Category:</label>
-                <select [(ngModel)]="filter.category">
+                <select [(ngModel)]="filter.category" (ngModelChange)="onFilterChange()">
                     <option value="">All</option>
-                    <option *ngFor="let c of categories" [value]="c">{{ c.name }}</option>
+                    <option *ngFor="let c of categories" [value]="c.name">{{ c.name }}</option>
                 </select>
             </div>
             <div class="filter-wrapper">
                 <label>Due Date:</label>
-                <input type="date" [(ngModel)]="filter.dueDate" />
+                <input type="date" [(ngModel)]="filter.dueDate" (ngModelChange)="onFilterChange()"/>
             </div>
             <div class="filter-wrapper">
                 <label>Priority:</label>
-                <select [(ngModel)]="filter.priority">
+                <select [(ngModel)]="filter.priority" (ngModelChange)="onFilterChange()">
                     <option value="">All</option>
                     <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
                 </select>
             </div>
             <div class="filter-wrapper">
                 <label>Status:</label>
-                <select [(ngModel)]="filter.status">
+                <select [(ngModel)]="filter.status" (ngModelChange)="onFilterChange()">
                     <option value="">All</option>
                     <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
                 </select>

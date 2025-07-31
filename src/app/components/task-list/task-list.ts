@@ -52,7 +52,7 @@ export class TaskList implements OnChanges {
         return false;
       }
       if (this.filters.status) {
-        const completed = this.filters.status === 'completed';
+        const completed = this.filters.status === 'Completed';
         if (task.completed !== completed) {
           return false;
         }

@@ -25,15 +25,19 @@ export class Overview {
 
   showFilters = false;
 
-  toggleFilters() {
-    this.showFilters = !this.showFilters;
-  }
-
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((c) => {
       this.categories = c;
     });
+  }
+
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
+
+  onFilterChange() {
+    this.filter = { ...this.filter };
   }
 }
