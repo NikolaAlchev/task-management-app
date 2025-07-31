@@ -31,11 +31,17 @@
 }
 
 .upper-container {
-    padding: 0px 30px;
+    padding: 10px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: #A9A9A9 1px solid;
+}
+
+.upper-container h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .filter-button {
@@ -61,13 +67,14 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.6s ease, opacity 0.2s ease;
+    transition: max-height 0.5s ease, padding 0.4s ease, opacity 0.2s ease;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem 2rem;
     align-items: center;
-    margin-top: 1rem;
-    padding: 0 1rem;
+    padding: 0;
+ 
+
 }
 
 
@@ -87,7 +94,9 @@
 .filter-container.visible {
     max-height: 500px;
     opacity: 1;
+    padding: 1.2rem 1.2rem;
 }
+
 
 @media (max-width: 900px) {
   .filter-container {
