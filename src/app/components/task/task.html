@@ -6,7 +6,7 @@
     {{ task.priority }}
   </div>
 </td>
-<td class="task-status">
+<td class="task-status" (click)="toggleStatus($event)">
   <div [ngClass]="getStatusClass(task.completed)">
     {{ task.completed ? 'Completed' : 'Not Completed' }}
   </div>

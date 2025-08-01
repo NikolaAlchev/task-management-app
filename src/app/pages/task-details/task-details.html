@@ -1,3 +1,63 @@
 <div class="task-details-container">
-    
+    <div class="main-container" *ngIf="task">
+        <div class="task-header">
+            <h1 *ngIf="!editMode">{{ task.title }}</h1>
+            <input class="input-title" *ngIf="editMode && editableTask" type="text" [(ngModel)]="editableTask.title" />
+            <div class="tools">
+                <fa-icon [icon]="faTrash" class="icon trash" *ngIf="editMode" (click)="deleteTask()"
+                    title="Delete task"></fa-icon>
+                <fa-icon [icon]="faPenToSquare" class="icon edit" (click)="toggleEdit()"
+                    [ngClass]="editMode ? 'active' : ''"></fa-icon>
+            </div>
+        </div>
+        <div class="task-description">
+            <label>Description:</label>
+            <p *ngIf="!editMode">{{ task.description }}</p>
+            <textarea *ngIf="editMode && editableTask" [(ngModel)]="editableTask.description"></textarea>
+        </div>
+        <div class="task-details">
+            <div class="task-dueDate">
+                <label>Due Date:</label>
+                <span class="content-wrapper" *ngIf="!editMode">
+                    {{ task.dueDate | date: 'shortDate' }}
+                </span>
+                <input *ngIf="editMode && editableTask" type="date" [ngModel]="dueDateString"
+                    (ngModelChange)="dueDateString = $event" />
+            </div>
+            <div class="task-category">
+                <label>Category:</label>
+                <div class="content-wrapper" *ngIf="!editMode">{{ task.category }}</div>
+                <select [(ngModel)]="editableTask.category" name="category" *ngIf="editMode && editableTask">
+                    <option *ngFor="let category of categories" [value]="category.name">
+                        {{ category.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="task-priority">
+                <label>Priority:</label>
+                <div class="content-wrapper" [ngClass]="getPriorityClass(task.priority)" *ngIf="!editMode">
+                    {{ task.priority }}
+                </div>
+                <select *ngIf="editMode && editableTask" [(ngModel)]="editableTask.priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <div class="task-status">
+                <label>Status:</label>
+                <div class="content-wrapper" [ngClass]="getStatusClass(task.completed)" *ngIf="!editMode">
+                    {{ task.completed ? 'Completed' : 'Not Completed' }}
+                </div>
+                <select *ngIf="editMode && editableTask" [(ngModel)]="editableTask.completed">
+                    <option [ngValue]="true">Completed</option>
+                    <option [ngValue]="false">Not Completed</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="button-container" *ngIf="editMode && editableTask">
+            <button class="save-button" type="button" (click)="saveChanges()">Save Changes</button>
+        </div>
+    </div>
 </div>
