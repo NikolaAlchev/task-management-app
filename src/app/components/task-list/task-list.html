@@ -44,25 +44,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let task of filteredTasks">
-      <td class="task-title">{{ task.title }}</td>
-      <td class="task-category">
-        <div>
-          {{ task.category }}
-        </div>
-      </td>
-      <td class="task-dueDate">{{ task.dueDate | date: 'shortDate' }}</td>
-      <td class="task-priority">
-        <div [ngClass]="getPriorityClass(task.priority)">
-          {{ task.priority }}
-        </div>
-
-      </td>
-      <td class="task-status">
-        <div [ngClass]="getStatusClass(task.completed)">
-          {{ task.completed ? 'Completed' : 'Not Completed' }}
-        </div>
-      </td>
-    </tr>
+    <tr *ngFor="let task of filteredTasks" app-task [task]="task" (click)="onTaskRowClick(task)" style="cursor: pointer;"></tr>
   </tbody>
 </table>

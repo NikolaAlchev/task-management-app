@@ -4,11 +4,13 @@ import { TaskFilter } from '../../models/task-filter.model';
 import { TaskService } from '../../services/task.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TaskComponent } from '../task/task';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TaskComponent],
   templateUrl: './task-list.html',
   styleUrls: ['./task-list.scss'],
 })
@@ -21,7 +23,7 @@ export class TaskList implements OnChanges {
   sortColumn: keyof Task = 'title';
   sortDirection: 'asc' | 'desc' | '' = '';
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private router: Router) {}
 
   ngOnInit(): void {
     this.taskService.getAll().subscribe((tasks) => {
@@ -117,23 +119,7 @@ export class TaskList implements OnChanges {
     this.applySort();
   }
 
-  getPriorityClass(priority: string): string {
-    switch (priority?.toLowerCase()) {
-      case 'low':
-        return 'priority-low';
-      case 'medium':
-        return 'priority-medium';
-      case 'high':
-        return 'priority-high';
-      default:
-        return '';
-    }
-  }
-
-  getStatusClass(completed: boolean): string {
-    if (completed) {
-      return 'status-completed';
-    }
-    return 'status-not-completed';
+  onTaskRowClick(task: Task) {
+    this.router.navigate(['/task-details', task.id]);
   }
 }

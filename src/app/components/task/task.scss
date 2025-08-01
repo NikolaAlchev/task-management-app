@@ -1,0 +1,73 @@
+td {
+    background-color: #FFF;
+    border-top: 1px solid #A9A9A9;
+    border-bottom: 1px solid #A9A9A9;
+    padding: 15px 20px;
+}
+
+.task-title {
+    font-weight: bold;
+}
+
+.task-category div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F1F1F1;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.task-dueDate {
+    font-weight: bold;
+}
+
+.task-priority div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.priority-low {
+    background-color: #C4F3B6;
+    color: #204B00;
+}
+
+.priority-medium {
+    background-color: #FFEEB8;
+    color: #FAAB00;
+}
+
+.priority-high {
+    background-color: #FFBFBF;
+    color: #AA1818;
+}
+
+.task-status div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.status-completed {
+    background-color: #C4F3B6;
+    color: #204B00;
+}
+
+.status-not-completed {
+    background-color: #F1F1F1;
+    color: #737373;
+}
