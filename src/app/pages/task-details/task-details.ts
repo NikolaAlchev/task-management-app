@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-task-details',
@@ -39,12 +40,18 @@ export class TaskDetails {
       this.categories = c;
     });
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.task = this.taskService.getTaskById(id);
-      if (!this.task) {
-        alert('Task not found');
-      }
-    }
+    if (!id) return;
+
+    this.taskService
+      .getTaskById(id)
+      .pipe(take(1))
+      .subscribe((task) => {
+        if (task) {
+          this.task = task;
+        } else {
+          alert('Task not found');
+        }
+      });
   }
 
   getPriorityClass(priority: string): string {
@@ -79,6 +86,16 @@ export class TaskDetails {
 
   saveChanges(): void {
     if (this.editableTask) {
+      if (
+        !this.editableTask.title?.trim() ||
+        !this.editableTask.category ||
+        !this.editableTask.priority ||
+        !this.editableTask.dueDate ||
+        isNaN(this.editableTask.dueDate.getTime())
+      ) {
+        alert('Please fill in all required fields.');
+        return;
+      }
       this.taskService.edit(this.editableTask);
       this.task = { ...this.editableTask };
       this.editMode = false;

@@ -22,7 +22,7 @@
                     {{ task.dueDate | date: 'shortDate' }}
                 </span>
                 <input *ngIf="editMode && editableTask" type="date" [ngModel]="dueDateString"
-                    (ngModelChange)="dueDateString = $event" />
+                    (ngModelChange)="dueDateString = $event"/>
             </div>
             <div class="task-category">
                 <label>Category:</label>

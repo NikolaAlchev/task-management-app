@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Task } from '../models/task.model';
 
 @Injectable({
@@ -44,8 +44,10 @@ export class TaskService {
     return this.tasks$;
   }
 
-  getTaskById(id: string): Task | undefined {
-    return this.tasks.find((task) => task.id === id);
+  getTaskById(id: string): Observable<Task | undefined> {
+    return this.tasks$.pipe(
+      map((tasks) => tasks.find((task) => task.id === id))
+    );
   }
 
   add(task: Omit<Task, 'id'>): void {

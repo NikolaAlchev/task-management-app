@@ -31,7 +31,7 @@
     font-weight: bold;
     border: none !important;
     outline: none !important;
-  box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 .icon {
@@ -43,6 +43,12 @@
 
 .trash {
     color: #DD3838;
+}
+
+.tools{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .edit:hover {
@@ -146,10 +152,20 @@ label {
 }
 
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .task-details {
     grid-template-columns: 1fr;
+
   }
+
+  .input-title{
+    font-size: 24px;
+    max-width: 200px;
+    }
+    .icon{
+        font-size: 18px;
+        margin: 0 5px;
+    }
 }
 
 .task-details input,
@@ -193,3 +209,12 @@ label {
 .save-button:hover {
   background-color: #2563eb;
 }
+
+@media (max-width: 500px) {
+  .task-details > div{
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+}
+
