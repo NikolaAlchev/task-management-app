@@ -7,9 +7,9 @@ import { Category } from '../models/category.model';
 })
 export class CategoryService {
   private categories: Category[] = [
-    { id: crypto.randomUUID(), name: 'Work' },
-    { id: crypto.randomUUID(), name: 'Personal' },
-    { id: crypto.randomUUID(), name: 'Urgent' },
+    { id: '5d415d95-e53f-4f51-906c-1eeb0c62fb14 ', name: 'Work' },
+    { id: 'c4ce0a07-7471-4670-950c-8b230e3ea0d4', name: 'Personal' },
+    { id: '2baaf713-74e7-4fcc-af27-bf9fa0ff09c4', name: 'Urgent' },
   ];
 
   private categoriesSubject = new BehaviorSubject<Category[]>(this.categories);

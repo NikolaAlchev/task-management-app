@@ -1,1 +1,17 @@
-<p>categories works!</p>
+<div class="categories-container">
+
+    <div class="main-container">
+        <h2 class="title">Add a category</h2>
+        <div class="add-category-form">
+            <label for="categoryName">Category Name:</label>
+            <input type="text" id="categoryName" [(ngModel)]="categoryName" placeholder="Enter category name" />
+            <button (click)="addCategory()" class="add-category-button"> + </button>
+        </div>
+        <div class="categories-list">
+            <div *ngFor="let category of categories">
+                {{ category.name }}
+                <fa-icon [icon]="faPenToSquare" class="icon edit" (click)="editCategory(category)"></fa-icon>
+                <fa-icon [icon]="faTrash" class="icon trash" (click)="deleteCategory(category.id)"></fa-icon>
+            </div>
+        </div>
+    </div>
