@@ -1,7 +1,18 @@
-<app-sidebar></app-sidebar>
+<div class="sidebar-wrapper" [class.open]="sidebarOpen">
+  <app-sidebar (sidebarClosed)="closeSidebar()"></app-sidebar>
+</div>
 
-<div class="right-container">
+<div
+  class="sidebar-overlay"
+  *ngIf="sidebarOpen && isMobile"
+  (click)="toggleSidebar()">
+</div>
+
+<div
+  class="right-container"
+  [style.marginLeft]="sidebarOpen ? '250px' : '0'">
   <header>
+    <fa-icon [icon]="faBars" (click)="toggleSidebar()" class="icon"></fa-icon>
     <h1 class="title">{{ currentTitle }}</h1>
   </header>
   <main>

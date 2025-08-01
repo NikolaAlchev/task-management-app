@@ -4,8 +4,11 @@
         <h2 class="title">Add a category</h2>
         <div class="add-category-form">
             <label for="categoryName">Category Name:</label>
-            <input type="text" id="categoryName" [(ngModel)]="categoryName" placeholder="Enter category name" />
-            <button (click)="addCategory()" class="add-category-button"> + </button>
+            <div class="input-container">
+                <input type="text" id="categoryName" [(ngModel)]="categoryName" placeholder="Enter category name" />
+                <button (click)="addCategory()" class="add-category-button"> + </button>
+            </div>
+
         </div>
         <div class="categories-list">
             <div *ngFor="let category of categories">

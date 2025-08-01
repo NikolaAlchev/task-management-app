@@ -1,49 +1,52 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col" (click)="onSort('title')" style="cursor: pointer;">
-        Title
-        <span *ngIf="sortColumn === 'title'">
-          <i class="bi" [ngClass]="
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" (click)="onSort('title')" style="cursor: pointer;">
+          Title
+          <span *ngIf="sortColumn === 'title'">
+            <i class="bi" [ngClass]="
               sortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill'
             "></i>
-        </span>
-      </th>
-      <th scope="col" (click)="onSort('category')" style="cursor: pointer;">
-        Category
-        <span *ngIf="sortColumn === 'category'">
-          <i class="bi" [ngClass]="
+          </span>
+        </th>
+        <th scope="col" (click)="onSort('category')" style="cursor: pointer;">
+          Category
+          <span *ngIf="sortColumn === 'category'">
+            <i class="bi" [ngClass]="
               sortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill'
             "></i>
-        </span>
-      </th>
-      <th scope="col" (click)="onSort('dueDate')" style="cursor: pointer;">
-        Due Date
-        <span *ngIf="sortColumn === 'dueDate'">
-          <i class="bi" [ngClass]="
+          </span>
+        </th>
+        <th scope="col" (click)="onSort('dueDate')" style="cursor: pointer;">
+          Due Date
+          <span *ngIf="sortColumn === 'dueDate'">
+            <i class="bi" [ngClass]="
               sortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill'
             "></i>
-        </span>
-      </th>
-      <th scope="col" (click)="onSort('priority')" style="cursor: pointer;">
-        Priority
-        <span *ngIf="sortColumn === 'priority'">
-          <i class="bi" [ngClass]="
+          </span>
+        </th>
+        <th scope="col" (click)="onSort('priority')" style="cursor: pointer;">
+          Priority
+          <span *ngIf="sortColumn === 'priority'">
+            <i class="bi" [ngClass]="
               sortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill'
             "></i>
-        </span>
-      </th>
-      <th scope="col" (click)="onSort('completed')" style="cursor: pointer;">
-        Status
-        <span *ngIf="sortColumn === 'completed'">
-          <i class="bi" [ngClass]="
+          </span>
+        </th>
+        <th scope="col" (click)="onSort('completed')" style="cursor: pointer;">
+          Status
+          <span *ngIf="sortColumn === 'completed'">
+            <i class="bi" [ngClass]="
               sortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill'
             "></i>
-        </span>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of filteredTasks" app-task [task]="task" (click)="onTaskRowClick(task)" style="cursor: pointer;"></tr>
-  </tbody>
-</table>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of filteredTasks" app-task [task]="task" (click)="onTaskRowClick(task)"
+        style="cursor: pointer;"></tr>
+    </tbody>
+  </table>
+</div>

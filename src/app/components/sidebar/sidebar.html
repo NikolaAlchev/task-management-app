@@ -2,19 +2,19 @@
   <nav>
     <ul>
       <li>
-        <a routerLink="/overview" class="link">
+        <a routerLink="/overview" class="link" (click)="handleLinkClick()">
           <fa-icon [icon]="faTableColumns" class="icon"></fa-icon>
           <p class="link-text">Overview</p>
         </a>
       </li>
       <li>
-        <a routerLink="/categories" class="link">
+        <a routerLink="/categories" class="link" (click)="handleLinkClick()">
           <fa-icon [icon]="faShapes" class="icon"></fa-icon>
           <p class="link-text">Categories</p>
         </a>
       </li>
       <li>
-        <a (click)="addTaskSidebarService.openAddTask()" class="link">
+        <a (click)="addTaskSidebarService.openAddTask()" class="link" (click)="handleLinkClick()">
           <fa-icon [icon]="faPlus" class="icon"></fa-icon>
           <p class="link-text">Add Task</p>
         </a>

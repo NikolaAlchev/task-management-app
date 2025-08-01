@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -15,9 +15,17 @@ import { AddTaskSidebarService } from '../../services/add-task-sidebar.service';
   styleUrl: './sidebar.scss',
 })
 export class Sidebar {
+  @Output() sidebarClosed = new EventEmitter<void>();
+
   faTableColumns = faTableColumns;
   faShapes = faShapes;
   faPlus = faPlus;
 
   constructor(public addTaskSidebarService: AddTaskSidebarService) {}
+
+  handleLinkClick() {
+    if (window.innerWidth <= 768) {
+      this.sidebarClosed.emit();
+    }
+  }
 }

@@ -21,15 +21,28 @@
 }
 
 .add-category-form{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
     align-items: center;
-    justify-content: start;
+    max-width: 500px;
+}
+
+@media (max-width: 900px) {
+  .add-category-form {
+    grid-template-columns: 1fr;
+  }
 }
 
 label{
   font-weight: 600;
-  min-width: 100px;
-  margin-right: 20px;
+  min-width: 130px;
+}
+
+.input-container{
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
 #categoryName {
@@ -42,6 +55,7 @@ label{
   outline-color: #3b82f6;
   margin-right: 10px;
   max-width: 200px;
+  width: 100%;
 }
 
 .add-category-button {
