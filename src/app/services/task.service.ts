@@ -40,16 +40,29 @@ export class TaskService {
   private tasksSubject = new BehaviorSubject<Task[]>(this.tasks);
   tasks$ = this.tasksSubject.asObservable();
 
+  /**
+   * Returns an observable of all tasks.
+   * @returns {Observable<Task[]>} Observable stream of the task list.
+   */
   getAll(): Observable<Task[]> {
     return this.tasks$;
   }
 
+  /**
+   * Returns an observable for a task matching the provided ID.
+   * @param {string} id - The unique identifier of the task.
+   * @returns {Observable<Task | undefined>} Observable stream of the matched task or undefined if not found.
+   */
   getTaskById(id: string): Observable<Task | undefined> {
     return this.tasks$.pipe(
       map((tasks) => tasks.find((task) => task.id === id))
     );
   }
 
+  /**
+   * Adds a new task to the task list.
+   * @param {Omit<Task, 'id'>} task - Task object without the ID; ID will be generated.
+   */
   add(task: Omit<Task, 'id'>): void {
     const currentTasks = this.tasksSubject.getValue();
     const newTask: Task = {
@@ -59,6 +72,10 @@ export class TaskService {
     this.tasksSubject.next([...currentTasks, newTask]);
   }
 
+  /**
+   * Edits an existing task by replacing it with the updated one.
+   * @param {Task} updatedTask - The task object with updated fields.
+   */
   edit(updatedTask: Task): void {
     const tasks = this.tasksSubject.getValue();
     const index = tasks.findIndex((t) => t.id === updatedTask.id);
@@ -68,6 +85,10 @@ export class TaskService {
     }
   }
 
+  /**
+   * Deletes a task by its ID.
+   * @param {string} id - The unique identifier of the task to delete.
+   */
   delete(id: string): void {
     const tasks = this.tasksSubject.getValue();
     const filteredTasks = tasks.filter((t) => t.id !== id);
